@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>PvZ Craft</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Nunito:wght@600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- ======================= title screen ======================= -->
+  <section id="title" class="screen active">
+    <div class="title-inner">
+      <img class="logo" src="assets/images/PvZ_Logo.png" alt="Plants vs. Zombies">
+      <h1 class="craft-word">CRAFT</h1>
+      <p class="subtitle">Drag things together. Discover every plant &mdash; or every zombie.</p>
+      <div class="mode-pick">
+        <button class="mode-card plant" data-mode="plant">
+          <img src="assets/icons/sunflower.png" alt="">
+          <span class="mode-name">Plant Mode</span>
+          <span class="mode-desc">Start with Sun, Water, Seed &amp; Dirt.<br>Grow all 49 plants.</span>
+          <span class="mode-progress" data-progress="plant"></span>
+        </button>
+        <button class="mode-card zombie" data-mode="zombie">
+          <img src="assets/icons/z_zombie.png" alt="">
+          <span class="mode-name">Zombie Mode</span>
+          <span class="mode-desc">Start with a Zombie, Brain, Grave, Junk &amp; Water.<br>Raise all 26 zombies.</span>
+          <span class="mode-progress" data-progress="zombie"></span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= game screen ======================= -->
+  <section id="game" class="screen">
+    <header class="topbar">
+      <button class="btn icon-btn" id="btn-home" title="Back to title">&#8962;</button>
+      <div class="brand"><span class="brand-pvz">PvZ</span> Craft <span class="mode-label" id="mode-label"></span></div>
+      <div class="goal-meter" id="goal-meter" title="Open the Almanac">
+        <img id="goal-icon" src="" alt="">
+        <div class="meter"><div class="meter-fill" id="meter-fill"></div></div>
+        <span id="goal-count"></span>
+      </div>
+      <div class="actions">
+        <button class="btn" id="btn-almanac">Almanac</button>
+        <button class="btn" id="btn-hint">Hint</button>
+        <button class="btn" id="btn-clear" title="Clear the lawn">Clear</button>
+        <button class="btn icon-btn" id="btn-sound" title="Sound on/off">&#9835;</button>
+        <button class="btn danger" id="btn-reset" title="Forget everything in this mode">Reset</button>
+      </div>
+    </header>
+
+    <main class="play">
+      <div id="board" class="board">
+        <div class="board-help" id="board-help">Drag items from the right onto the lawn,<br>then drop one on top of another to combine them.</div>
+        <div class="trash" id="trash" title="Drop here to remove">&#128465;</div>
+      </div>
+      <aside class="sidebar" id="sidebar">
+        <div class="side-head">
+          <input id="search" type="search" placeholder="Search (N items)…" autocomplete="off">
+          <div class="filters" id="filters">
+            <button class="chip-btn active" data-filter="all">All</button>
+            <button class="chip-btn" data-filter="goal" id="filter-goal">Plants</button>
+            <button class="chip-btn" data-filter="element">Elements</button>
+            <button class="chip-btn" data-filter="hybrid">Hybrids</button>
+          </div>
+          <select id="sort">
+            <option value="time">Discovery order</option>
+            <option value="name">Name</option>
+          </select>
+        </div>
+        <div class="items" id="items"></div>
+      </aside>
+    </main>
+  </section>
+
+  <!-- ======================= almanac ======================= -->
+  <div class="modal" id="almanac" hidden>
+    <div class="modal-box almanac-box">
+      <button class="modal-close" data-close>&times;</button>
+      <h2 id="almanac-title">Suburban Almanac</h2>
+      <div class="almanac-layout">
+        <div class="almanac-grid" id="almanac-grid"></div>
+        <div class="almanac-card" id="almanac-card"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-stack" id="toasts"></div>
+  <script src="js/entities.js"></script>
+  <script src="js/recipes.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>
